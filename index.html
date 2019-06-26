@@ -27,12 +27,12 @@
                                 <!-- <button id="submit" type="submit"
                                     class="btn btn-primary btn-block pb-1 mt-1">Submit</button> -->
                     </form>
-                    <input type="submit" id="submit" class="btn btn-primary btn-block pb-1 mt-1" value="submit">
+                    <button type="submit" id="submit" class="btn btn-primary btn-block pb-1 mt-1">submit</button>
                 </div>
             </div>
         </div>
     </div>
-
+    
     
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -58,6 +58,14 @@
         messagingSenderId: "913347607874",
         appId: "1:913347607874:web:e8f9c01a34493468"
     };
+    var timers;
+    function waittimer(){
+
+        timers = setTimeout(redirect, 3000);
+        
+    }
+
+
     // Initialize Firebase
     function submit_firebase(){
         console.log("Function Activate");
@@ -67,11 +75,17 @@
         console.log(nums)
 
         var updateRef = firebase.database().ref('Order');
-        updateRef.push({'menu' : menu, 'number' :nums});
+        var msg = updateRef.push({'menu' : menu, 'number' :nums});
+        console.log("--------")
+        console.log(msg);
+        //if(msg){
+           //   window.location.href = "done.html";
+         //};
 
-        window.close()
-         
+        waittimer();
     }
+
+
 
     firebase.initializeApp(firebaseConfig);
 
@@ -79,6 +93,10 @@
         document.getElementById('submit')
             .addEventListener('click', submit_firebase);
     });
+
+    function redirect(){
+        window.location = "done.html";
+    }
 
 </script>
 
