@@ -68,6 +68,8 @@
 
         var updateRef = firebase.database().ref('Order');
         updateRef.push({'menu' : menu, 'number' :nums});
+
+        window.close()
          
     }
 
