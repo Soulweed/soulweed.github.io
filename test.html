@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="submit" id="submit" value="submit">
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyC4e-GOxOjLpucQB8dIT2L17WUrEuD4rGY",
+        authDomain: "whanjeab-5bf51.firebaseapp.com",
+        databaseURL: "https://whanjeab-5bf51.firebaseio.com",
+        projectId: "whanjeab-5bf51",
+        messagingSenderId: "913347607874",
+        appId: "1:913347607874:web:e8f9c01a34493468"
+    };
+    // Initialize Firebase
+    function firebase_send(){
+        var updateRef = firebase.database().ref('Order');
+        updateRef.push({'Id':"testsend"});
+    }
+    firebase.initializeApp(firebaseConfig);
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('submit')
+            .addEventListener('click', firebase_send);
+    });
+</script>
+</html>
